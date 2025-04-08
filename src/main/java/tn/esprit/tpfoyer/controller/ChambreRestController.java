@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entity.Chambre;
+import tn.esprit.tpfoyer.entity.Etudiant;
+import tn.esprit.tpfoyer.entity.TypeChambre;
 import tn.esprit.tpfoyer.service.IChambreService;
 
 import java.util.List;
@@ -52,6 +54,21 @@ public class ChambreRestController {
     public Chambre modifyChambre(@RequestBody Chambre c) {
         Chambre chambre = chambreService.modifyChambre(c);
         return chambre;
+    }
+    @GetMapping("trouverchambreparType/{type-chambre}")
+    public List<Chambre> trouverchambreparType(@PathVariable("type-chambre") TypeChambre tch) {
+        List<Chambre> listchambre = chambreService.searchChambrepartype(tch);
+        return listchambre;
+    }
+    @GetMapping("trouverchambreparnum/{numero-chambre}")
+    public Chambre trouverchambreparnum(@PathVariable("numero-chambre") Long num) {
+        Chambre ch = chambreService.searchChambreparnumerochambre(num);
+        return ch;
+    }
+    @PostMapping("/ajouter-chambre-reservation-etudiant")
+    public Chambre addProjetAndProjetDetail(@RequestBody Chambre p) {
+        Chambre projet = chambreService.addProjetAndProjetDetailAndAssign(p);
+        return projet;
     }
 
 }

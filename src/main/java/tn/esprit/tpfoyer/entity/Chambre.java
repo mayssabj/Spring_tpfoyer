@@ -1,5 +1,6 @@
 package tn.esprit.tpfoyer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,12 +18,20 @@ public class Chambre {
     private Long idChambre ;
     private Long numeroChambre ;
     @Enumerated(EnumType.STRING)
-    private TypeChambre typeC;
+    private TypeChambre typeChambre;
 
     @ToString.Exclude
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Reservation> reservations;
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+    }
 
     @ManyToOne
     private Bloc blocs ;
@@ -36,11 +45,11 @@ public class Chambre {
     }
 
     public TypeChambre getTypeC() {
-        return typeC;
+        return typeChambre;
     }
 
     public void setTypeC(TypeChambre typeC) {
-        this.typeC = typeC;
+        this.typeChambre = typeC;
     }
 
     public Long getIdChambre() {

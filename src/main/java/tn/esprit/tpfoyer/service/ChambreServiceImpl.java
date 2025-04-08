@@ -5,6 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entity.Chambre;
+import tn.esprit.tpfoyer.entity.Etudiant;
+import tn.esprit.tpfoyer.entity.Reservation;
+import tn.esprit.tpfoyer.entity.TypeChambre;
 import tn.esprit.tpfoyer.repository.ChambreRepository;
 
 import java.util.List;
@@ -40,4 +43,18 @@ public class ChambreServiceImpl implements IChambreService {
     public Chambre modifyChambre(Chambre chambre) {
         return chambreRepository.save(chambre);
     }
+    @Override
+    public List<Chambre> searchChambrepartype(TypeChambre tch) {
+        return chambreRepository.findAllByTypeChambre(tch);
+    }
+    @Override
+    public Chambre searchChambreparnumerochambre(Long numch) {
+        return chambreRepository.findChambreByNumeroChambre(numch);
+    }
+    @Override
+    public Chambre addProjetAndProjetDetailAndAssign(Chambre ch) {
+        return chambreRepository.save(ch);
+
+    }
+
 }

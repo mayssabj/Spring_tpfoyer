@@ -76,5 +76,11 @@ public class Etudiant {
     @ManyToMany(mappedBy = "etudiants")
     private Set<Reservation> reservatios ;
 
+    public Set<Reservation> getReservatios() {
+        return reservatios;
+    }
 
+    public void setReservatios(Set<Reservation> reservatios) {
+        this.reservatios = reservatios;
+    }
 }

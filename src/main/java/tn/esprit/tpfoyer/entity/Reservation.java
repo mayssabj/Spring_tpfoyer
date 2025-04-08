@@ -21,6 +21,14 @@ public class Reservation {
     @ManyToMany
     private Set<Etudiant> etudiants ;
 
+    public Set<Etudiant> getEtudiants() {
+        return etudiants;
+    }
+
+    public void setEtudiants(Set<Etudiant> etudiants) {
+        this.etudiants = etudiants;
+    }
+
     public String getIdReservation() {
         return idReservation;
     }

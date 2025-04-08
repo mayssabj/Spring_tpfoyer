@@ -3,11 +3,13 @@ package tn.esprit.tpfoyer.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entity.Chambre;
 import tn.esprit.tpfoyer.entity.Etudiant;
 import tn.esprit.tpfoyer.service.IEtudiantService;
 
+import java.util.Date;
 import java.util.List;
 @Tag(name="Gestion Etudiants")
 @RestController
@@ -49,4 +51,15 @@ public class EtudiantRestController {
         Etudiant etudiant = etudiantService.modifyEtudiant(e);
         return etudiant;
     }
+    @GetMapping("trouveretudiantbyecole/{ecole}/{date}")
+    public List<Etudiant> trouveretudiantbyecoleAndDateNaissance(@PathVariable("ecole") String ecole,@PathVariable("date")  @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
+        List<Etudiant> etudiants = etudiantService.searchEtudiantbyEcoleAndDateNaissance(ecole,date);
+        return etudiants;
+    }
+    @GetMapping("trouverChselonEt/{cin}")
+    public Chambre trouverChselonEt(@PathVariable("cin") Long cin) {
+        Chambre ch = etudiantService.trouverChselonEt(cin);
+        return ch;
+    }
+
 }
