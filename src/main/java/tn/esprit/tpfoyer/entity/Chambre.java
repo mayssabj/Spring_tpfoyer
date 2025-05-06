@@ -25,6 +25,22 @@ public class Chambre {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Reservation> reservations;
 
+    public Bloc getBlocs() {
+        return blocs;
+    }
+
+    public void setBlocs(Bloc blocs) {
+        this.blocs = blocs;
+    }
+
+    public TypeChambre getTypeChambre() {
+        return typeChambre;
+    }
+
+    public void setTypeChambre(TypeChambre typeChambre) {
+        this.typeChambre = typeChambre;
+    }
+
     public Set<Reservation> getReservations() {
         return reservations;
     }
@@ -59,4 +75,6 @@ public class Chambre {
     public void setIdChambre(Long idChambre) {
         this.idChambre = idChambre;
     }
+
+
 }

@@ -12,4 +12,6 @@ public interface IReservationService {
     public Reservation addReservation(Reservation r);
     public void removeReservation(String reservationId);
     public Reservation modifyReservation(Reservation reservation);
+    public void mettreAJourEtAfficherReservations();
+
 }
